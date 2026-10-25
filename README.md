@@ -2,7 +2,7 @@
 
 Small web experiments: CSS tricks, cursor toys and little animations. Plain HTML, CSS and JavaScript, no build step.
 
-**Live:** https://salroid.github.io/playground/
+**Live:** https://salroid.github.io/Playground/
 
 | Toy | What it is |
 |---|---|
