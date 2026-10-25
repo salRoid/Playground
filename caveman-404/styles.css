@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    /* Matches the GIF's own white background so its edges disappear. */
+    background: #fff;
+    font-family: "Poppins", sans-serif;
+}
+
+/* The GIF's ground line sits at ~71% of its height; text is placed relative to it. */
+.stage {
+    position: relative;
+    width: min(800px, 100vw);
+}
+
+.stage img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+h1 {
+    position: absolute;
+    top: 2%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: min(180px, 22vw);
+    font-weight: 600;
+    line-height: 1;
+    color: #96d294;
+    opacity: 0.5;
+}
+
+p {
+    position: absolute;
+    top: 74%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: clamp(1.125rem, 3.5vw, 1.5rem);
+    font-weight: 500;
+    color: #4c772b;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}

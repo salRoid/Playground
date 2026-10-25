@@ -1,0 +1,257 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --ink: #2b2730;
+    --muted: #6b6572;
+    --accent: #e45f74;
+    --panel-from: #23074d;
+    --panel-to: #cc5333;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100svh;
+    font-family: "Poppins", sans-serif;
+    color: var(--ink);
+    background: #faf8f6;
+}
+
+.layout {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+}
+
+/* ---------- Left: words ---------- */
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    padding: 96px clamp(24px, 6vw, 88px) 48px;
+    max-width: 640px;
+    justify-self: end;
+    width: 100%;
+}
+
+.eyebrow {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.title {
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    font-weight: 700;
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+}
+
+.date {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+.message {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 44ch;
+}
+
+/* ---------- Make your own ---------- */
+
+.maker {
+    margin-top: 16px;
+    border-top: 1px solid rgba(43, 39, 48, 0.12);
+    padding-top: 16px;
+}
+
+.maker summary {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--ink);
+}
+
+.maker summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.maker-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.maker-form label {
+    display: grid;
+    gap: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+.maker-form input {
+    min-height: 44px;
+    padding: 0 12px;
+    border: 1px solid rgba(43, 39, 48, 0.2);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--ink);
+    /* 16px stops iOS Safari zooming in on focus. */
+    font: 400 16px "Poppins", sans-serif;
+}
+
+.maker-form input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+}
+
+.maker-form button {
+    grid-column: 1 / -1;
+    min-height: 48px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--ink);
+    color: #fff;
+    font: 600 1rem "Poppins", sans-serif;
+    cursor: pointer;
+}
+
+.maker-form button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.maker-hint {
+    grid-column: 1 / -1;
+    font-size: 0.8125rem;
+    color: var(--muted);
+}
+
+/* ---------- Right: the clock ---------- */
+
+.clock {
+    display: grid;
+    place-items: center;
+    padding: 48px 24px;
+    background: linear-gradient(135deg, var(--panel-from), var(--panel-to));
+    color: #fff;
+}
+
+.rings {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(16px, 3vw, 32px);
+    width: min(100%, 440px);
+}
+
+.rings[hidden],
+.celebrate[hidden] {
+    display: none;
+}
+
+.ring {
+    position: relative;
+    aspect-ratio: 1;
+    display: grid;
+    place-content: center;
+    text-align: center;
+}
+
+.ring svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.ring circle {
+    fill: none;
+    stroke-width: 6;
+}
+
+.ring .track {
+    stroke: rgba(255, 255, 255, 0.15);
+}
+
+.ring .progress {
+    stroke: #fff;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.ring .value {
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
+    font-weight: 600;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.ring .label {
+    margin-top: 6px;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.75;
+}
+
+.celebrate {
+    text-align: center;
+}
+
+.celebrate-emoji {
+    font-size: 5rem;
+    line-height: 1;
+}
+
+.celebrate-text {
+    margin-top: 16px;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+}
+
+/* ---------- Phones and narrow windows: stack, clock first ---------- */
+
+@media (max-width: 820px) {
+    .layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+    }
+
+    .clock {
+        order: -1;
+        padding: 88px 16px 40px;
+    }
+
+    .intro {
+        justify-self: stretch;
+        max-width: none;
+        padding: 32px 16px max(40px, env(safe-area-inset-bottom));
+    }
+
+    .rings {
+        width: min(100%, 360px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ring .progress {
+        transition: none;
+    }
+}

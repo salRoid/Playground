@@ -1,0 +1,336 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    overflow: hidden;
+    /* Let a finger drag steer the eyes instead of scrolling the page. */
+    touch-action: none;
+}
+
+.scene {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 72px 16px 32px;
+    text-align: center;
+}
+
+.scene[hidden] {
+    display: none;
+}
+
+/* ---------- Monk ---------- */
+
+.scene--monk {
+    color: #fff;
+    background: radial-gradient(#ece38a, #dda17e);
+    /* One design pixel of the original 512px monk, shrunk to fit phones and short screens. */
+    --u: min(1px, calc((100vw - 32px) / 512), calc((100svh - 260px) / 512));
+}
+
+.scene--monk h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.tagline {
+    font-size: clamp(1.25rem, 5vw, 3rem);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.monk {
+    position: relative;
+    width: calc(512 * var(--u));
+    height: calc(512 * var(--u));
+    flex-shrink: 0;
+}
+
+.monk img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.monk-eyes {
+    position: absolute;
+    top: calc(93 * var(--u));
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: calc(6 * var(--u));
+}
+
+.monk-eyes .eye {
+    position: relative;
+    display: block;
+    width: calc(35 * var(--u));
+    height: calc(35 * var(--u));
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 5px 50px rgba(0, 0, 0, 0.2), inset 0 0 15px #dadada, inset 0 0 25px #dadada;
+}
+
+.monk-eyes .eye::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: calc(15 * var(--u));
+    width: calc(18 * var(--u));
+    height: calc(18 * var(--u));
+    border-radius: 50%;
+    border: calc(5 * var(--u)) solid #7ca2d1;
+    background: #333232;
+    transform: translate(-50%, -50%);
+}
+
+/* ---------- Doge ---------- */
+
+.scene--doge {
+    background: radial-gradient(#4d4d4d, #000);
+}
+
+.hint {
+    position: absolute;
+    bottom: max(32px, env(safe-area-inset-bottom));
+    left: 0;
+    right: 0;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+}
+
+.dog {
+    position: relative;
+    /* The drawing hangs off this point; the box is sized so it centres in the scene. */
+    width: 26vmin;
+    height: 20vmin;
+    left: 5vmin;
+    cursor: pointer;
+}
+
+.dog-head {
+    background-color: #f8dc93;
+    position: relative;
+    width: 20vmin;
+    height: 14vmin;
+    left: -16vmin;
+    top: -10vmin;
+    border-radius: 2vmin 0 0 16vmin;
+}
+
+.dog-nose {
+    background-color: #000;
+    position: relative;
+    width: 3vmin;
+    height: 3vmin;
+    left: -1vmin;
+    top: -1vmin;
+    border-radius: 2vmin 1vmin 1vmin 2vmin;
+}
+
+.dog-ear {
+    background-color: #f8dc93;
+    position: absolute;
+    height: 4vmin;
+    width: 3vmin;
+    top: -4vmin;
+    right: 0;
+    border-radius: 16vmin 4vmin 0 0;
+    box-shadow: -4vmin 0 0 0 #c3af79;
+}
+
+.dog-eyes {
+    background-color: #d2af5e;
+    position: relative;
+    height: 7vmin;
+    width: 7vmin;
+    border-radius: 50%;
+    top: -1vmin;
+    left: 10vmin;
+}
+
+.dog-eyes-black {
+    background-color: #000;
+    position: relative;
+    height: 3vmin;
+    width: 3vmin;
+    border-radius: 50%;
+    top: 1vmin;
+    left: 2vmin;
+}
+
+.dog-eyes-white {
+    background-color: #fff;
+    position: relative;
+    height: 1vmin;
+    width: 1vmin;
+    border-radius: 50%;
+    top: 0.5vmin;
+    left: 0.5vmin;
+    transition: width 0.15s, height 0.15s;
+}
+
+.dog-smile {
+    background-color: #f8dc93;
+    position: absolute;
+    height: 3vmin;
+    width: 4vmin;
+    transform: rotate(180deg);
+    transform-origin: 100% 0;
+    border-top: 3px solid #d2af5e;
+    border-left: 2px solid #d2af5e;
+    left: -0.8vmin;
+    border-radius: 3vmin 0 0 0;
+}
+
+.tongue {
+    height: 3vmin;
+    width: 2.5vmin;
+    background-color: #f5901e;
+    border-radius: 1vmin 1vmin 0 0;
+    position: absolute;
+    left: 1.3vmin;
+    z-index: 1;
+    animation: lick 0.3s infinite;
+}
+
+@keyframes lick {
+    0%, 100% { height: 3vmin; top: -3.2vmin; }
+    50% { height: 2vmin; top: -2.2vmin; }
+}
+
+.dog-angry {
+    display: none;
+    background-color: #000;
+    z-index: 1;
+    bottom: 4vmin;
+    left: 4vmin;
+    position: absolute;
+    height: 2.7vmin;
+    width: 4vmin;
+}
+
+.teeth {
+    position: absolute;
+    display: flex;
+}
+
+.fang {
+    transform: rotate(180deg);
+    border: 0.9vmin solid transparent;
+    border-bottom: 2vmin solid #fff;
+    width: 0;
+    height: 0;
+    animation: snarl 0.1s ease-in-out infinite;
+}
+
+@keyframes snarl {
+    0%, 100% { border-bottom-width: 2.2vmin; }
+    25%, 75% { border-bottom-width: 2.1vmin; }
+    50% { border-bottom-width: 2vmin; }
+}
+
+.dog-body {
+    background-color: #f8dc93;
+    position: absolute;
+    width: 26vmin;
+    height: 14vmin;
+    border-radius: 2vmin 0 0 16vmin;
+    animation: breathe 0.4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0%, 100% { border-bottom-left-radius: 22vmin; }
+    25%, 75% { border-bottom-left-radius: 20vmin; }
+    50% { border-bottom-left-radius: 16vmin; }
+}
+
+.dog-tail {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 5vmin 3vmin;
+    border-color: transparent transparent #f8dc93 transparent;
+    position: absolute;
+    right: 1px;
+    top: -4vmin;
+    transform: rotate(15deg);
+    transform-origin: 100% 100%;
+    animation: wag 0.4s ease-in-out infinite;
+}
+
+@keyframes wag {
+    0%, 100% { transform: rotate(15deg); }
+    25%, 75% { transform: rotate(20deg); }
+    50% { transform: rotate(10deg); }
+}
+
+.dog-spot {
+    background-color: #d2af5e;
+    height: 12vmin;
+    width: 5vmin;
+    border-radius: 150px 0 0 150px;
+    transform: rotate(270deg);
+    position: absolute;
+    left: 4vmin;
+    top: 0;
+    transform-origin: 100% 0;
+}
+
+.dog-leg-1,
+.dog-leg-2,
+.dog-leg-3,
+.dog-leg-4 {
+    background-color: #f8dc93;
+    height: 6vmin;
+    width: 3vmin;
+    position: absolute;
+    z-index: 1;
+}
+
+.dog-leg-1 { left: 6vmin; top: 12vmin; }
+.dog-leg-2 { left: 10vmin; top: 13vmin; }
+.dog-leg-3 { left: 23vmin; top: 14vmin; }
+.dog-leg-4 { left: 19vmin; top: 14vmin; background-color: #c3af79; }
+
+.foot-1,
+.foot-2 {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent transparent #f8dc93 transparent;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.foot-1 { border-width: 0 0 6vmin 4vmin; }
+.foot-2 { border-width: 0 0 4vmin 4vmin; border-bottom-color: #c3af79; }
+
+/* Angry: snarl instead of smile, tail stops, pupils shrink, breathing speeds up. */
+.dog.is-angry .dog-smile { display: none; }
+.dog.is-angry .dog-angry { display: block; }
+.dog.is-angry .dog-tail { animation-play-state: paused; }
+.dog.is-angry .dog-eyes-white { width: 0.7vmin; height: 0.7vmin; }
+.dog.is-angry .dog-body { animation-duration: 0.1s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .tongue,
+    .fang,
+    .dog-body,
+    .dog-tail {
+        animation: none;
+    }
+}

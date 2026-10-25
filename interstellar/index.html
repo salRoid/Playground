@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="An astronaut drifting by a satellite dish above Earth, with a parallax star field.">
+    <meta name="theme-color" content="#070f2b">
+
+    <link href="../shared/back.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+
+    <title>Interstellar</title>
+</head>
+
+<body>
+    <a class="pg-back" href="../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Playground</a>
+
+    <canvas class="stars" aria-hidden="true"></canvas>
+
+    <img class="earth" src="img/earth.webp" alt="" width="512" height="512">
+
+    <div class="satellite" role="img" aria-label="An astronaut tethered to a satellite dish">
+        <img class="astronaut" src="img/astronaut.webp" alt="" width="72" height="72">
+        <svg class="tether" viewBox="0 0 300 150" aria-hidden="true">
+            <path d="M150 150 Q290 120 160 50" />
+        </svg>
+        <img class="dish" src="img/satellite-dish.webp" alt="" width="180" height="180">
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

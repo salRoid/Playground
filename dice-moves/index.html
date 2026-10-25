@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="A loaded dice. Roll it and watch odd versus even drift away from 50/50.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="../shared/back.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+
+    <title>Dice Moves</title>
+</head>
+
+<body>
+    <a class="pg-back" href="../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Playground</a>
+
+    <main>
+        <header>
+            <h1>Dice Moves</h1>
+            <p class="lede">This dice is loaded. Roll it and watch odd vs even drift away from 50/50.</p>
+        </header>
+
+        <img class="die" src="img/face-1.webp" alt="Dice showing 1" width="512" height="512">
+
+        <div class="actions">
+            <button type="button" class="roll">Roll</button>
+            <button type="button" class="reset" disabled>Reset</button>
+        </div>
+
+        <section class="stats" aria-label="Results">
+            <p class="summary" aria-live="polite">No rolls yet</p>
+
+            <div class="split" aria-hidden="true">
+                <span class="split-odd"></span>
+                <span class="split-even"></span>
+            </div>
+            <div class="split-legend">
+                <span>Odd <b class="odd-pct">–</b></span>
+                <span>Even <b class="even-pct">–</b></span>
+            </div>
+
+            <ol class="faces" aria-label="Rolls per face"></ol>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="A travel banner: the place name writes itself in, then two prints drop onto the photo.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+
+    <link href="../shared/back.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+
+    <title>Travel Banner</title>
+</head>
+
+<body>
+    <a class="pg-back" href="../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Playground</a>
+
+    <main class="banner">
+        <h1 class="title" aria-label="Bali"></h1>
+
+        <figure class="print print--right">
+            <div class="photo photo--2"></div>
+        </figure>
+
+        <figure class="print print--left">
+            <div class="photo photo--1"></div>
+            <figcaption class="place"></figcaption>
+        </figure>
+    </main>
+
+    <button type="button" class="replay">Replay</button>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

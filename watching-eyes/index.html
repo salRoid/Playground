@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="A monk and a dog whose eyes follow your cursor or finger.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+
+    <link href="../shared/back.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+
+    <title>Watching Eyes</title>
+</head>
+
+<body>
+    <a class="pg-back" href="../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Playground</a>
+
+    <div class="pg-switch" role="group" aria-label="Character">
+        <button type="button" data-scene="monk" aria-pressed="true">Monk</button>
+        <button type="button" data-scene="doge" aria-pressed="false">Doge</button>
+    </div>
+
+    <main class="scene scene--monk" id="monk">
+        <h1>Creepy Monk Eyes</h1>
+        <div class="monk">
+            <img src="img/monk.webp" alt="A cartoon monk" width="512" height="512">
+            <div class="monk-eyes">
+                <span class="eye"></span>
+                <span class="eye"></span>
+            </div>
+        </div>
+        <p class="tagline">Hey there! I am the crazy creepy monk.</p>
+    </main>
+
+    <main class="scene scene--doge" id="doge" hidden>
+        <div class="dog" role="img" aria-label="A cartoon dog that growls when you hover or tap it">
+            <div class="dog-body">
+                <div class="dog-tail"></div>
+                <div class="dog-spot"></div>
+                <div class="dog-leg-1"><div class="foot-1"></div></div>
+                <div class="dog-leg-2"><div class="foot-1"></div></div>
+                <div class="dog-leg-3"><div class="foot-1"></div></div>
+                <div class="dog-leg-4"><div class="foot-2"></div></div>
+            </div>
+            <div class="dog-head">
+                <div class="dog-nose"></div>
+                <div class="dog-ear"></div>
+                <div class="dog-eyes">
+                    <div class="eye dog-eyes-black">
+                        <div class="dog-eyes-white"></div>
+                    </div>
+                </div>
+                <div class="dog-smile">
+                    <div class="tongue"></div>
+                </div>
+                <div class="dog-angry">
+                    <div class="teeth">
+                        <div class="fang"></div>
+                        <div class="fang"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="hint">Hover or tap the dog</p>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

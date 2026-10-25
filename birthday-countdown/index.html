@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="A countdown to someone's next birthday. Set the name and date, share the link.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="../shared/back.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+
+    <title>Birthday Countdown</title>
+</head>
+
+<body>
+    <a class="pg-back" href="../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Playground</a>
+
+    <main class="layout">
+        <section class="intro">
+            <p class="eyebrow">Counting down to</p>
+            <h1 class="title"><span class="name"></span>’s Birthday</h1>
+            <p class="date"></p>
+            <p class="message">Life is nothing but fleeting memories, and I’m grateful to have shared the memorable ones with you. Cheers to another year.</p>
+
+            <details class="maker">
+                <summary>Make your own</summary>
+                <form class="maker-form">
+                    <label>
+                        Name
+                        <input name="name" type="text" maxlength="40" autocomplete="off" required>
+                    </label>
+                    <label>
+                        Birthday
+                        <input name="date" type="date" required>
+                    </label>
+                    <button type="submit">Create countdown</button>
+                    <p class="maker-hint">Opens the countdown with your name and date in the link. Share that link.</p>
+                </form>
+            </details>
+        </section>
+
+        <section class="clock" aria-label="Time remaining">
+            <div class="rings" role="timer" aria-live="off">
+                <div class="ring" data-unit="days">
+                    <svg viewBox="0 0 120 120" aria-hidden="true">
+                        <circle class="track" cx="60" cy="60" r="52" />
+                        <circle class="progress" cx="60" cy="60" r="52" />
+                    </svg>
+                    <span class="value">–</span>
+                    <span class="label">Days</span>
+                </div>
+                <div class="ring" data-unit="hours">
+                    <svg viewBox="0 0 120 120" aria-hidden="true">
+                        <circle class="track" cx="60" cy="60" r="52" />
+                        <circle class="progress" cx="60" cy="60" r="52" />
+                    </svg>
+                    <span class="value">–</span>
+                    <span class="label">Hours</span>
+                </div>
+                <div class="ring" data-unit="minutes">
+                    <svg viewBox="0 0 120 120" aria-hidden="true">
+                        <circle class="track" cx="60" cy="60" r="52" />
+                        <circle class="progress" cx="60" cy="60" r="52" />
+                    </svg>
+                    <span class="value">–</span>
+                    <span class="label">Minutes</span>
+                </div>
+                <div class="ring" data-unit="seconds">
+                    <svg viewBox="0 0 120 120" aria-hidden="true">
+                        <circle class="track" cx="60" cy="60" r="52" />
+                        <circle class="progress" cx="60" cy="60" r="52" />
+                    </svg>
+                    <span class="value">–</span>
+                    <span class="label">Seconds</span>
+                </div>
+            </div>
+
+            <div class="celebrate" hidden>
+                <p class="celebrate-emoji" aria-hidden="true">🎂</p>
+                <p class="celebrate-text">Happy Birthday, <span class="name"></span>!</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

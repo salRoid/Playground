@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    background: #1d2a2f url(img/backdrop.webp) center / cover no-repeat;
+    font-family: "Dancing Script", cursive;
+}
+
+.banner {
+    position: relative;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+/* A dim layer that lifts as the scene starts. */
+.banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    animation: lift 4s ease forwards;
+}
+
+@keyframes lift {
+    to { opacity: 0; }
+}
+
+/* ---------- Title: letters write in, then the whole line fades out ---------- */
+
+.title {
+    position: relative;
+    z-index: 1;
+    padding: 0 16px;
+    font-size: clamp(4rem, 16vw, 12rem);
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+    animation: fade-out 1s ease-out 3.6s forwards;
+}
+
+.letter {
+    display: inline-block;
+    white-space: pre;
+    opacity: 0;
+    animation: fade-in 1.4s ease-in-out forwards;
+    animation-delay: calc(var(--i) * 120ms);
+}
+
+@keyframes fade-in {
+    to { opacity: 1; }
+}
+
+@keyframes fade-out {
+    to { opacity: 0; }
+}
+
+/* ---------- Prints ---------- */
+
+.print {
+    --w: min(26rem, 52vw, 44vh);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--w);
+    padding: calc(var(--w) * 0.055);
+    padding-bottom: calc(var(--w) * 0.2);
+    background: #fff;
+    box-shadow: rgba(30, 30, 40, 0.3) 0 12px 36px;
+    opacity: 0;
+}
+
+.photo {
+    aspect-ratio: 4 / 5;
+    background-size: cover;
+    background-position: center;
+}
+
+.photo--1 {
+    background-image: url(img/print-left.webp);
+    background-position: bottom;
+}
+
+.photo--2 {
+    background-image: url(img/print-right.webp);
+}
+
+.place {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: calc(var(--w) * 0.03);
+    text-align: center;
+    color: #332d2d;
+    font-size: calc(var(--w) * 0.12);
+    font-weight: 500;
+}
+
+.print--right {
+    animation: rise 2.6s cubic-bezier(0.2, 0.8, 0.2, 1) 4s forwards;
+}
+
+.print--left {
+    animation: slide-in 2.6s cubic-bezier(0.2, 0.8, 0.2, 1) 4.7s forwards;
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 60vh) rotate(24deg);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-28%, -54%) rotate(8deg);
+    }
+}
+
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translate(-100vw, -46%) rotate(-24deg);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-72%, -46%) rotate(-8deg);
+    }
+}
+
+/* ---------- Replay ---------- */
+
+.replay {
+    position: fixed;
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(12px, env(safe-area-inset-bottom));
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(15, 15, 18, 0.55);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    font: 500 14px/1 system-ui, -apple-system, "Segoe UI", sans-serif;
+    cursor: pointer;
+}
+
+.replay:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+/* Reduced motion: skip the choreography and show the finished composition. */
+@media (prefers-reduced-motion: reduce) {
+    .banner::before,
+    .title,
+    .letter {
+        animation: none;
+    }
+
+    .title {
+        display: none;
+    }
+
+    .letter {
+        opacity: 1;
+    }
+
+    .print {
+        animation: none;
+        opacity: 1;
+    }
+
+    .print--right { transform: translate(-28%, -54%) rotate(8deg); }
+    .print--left { transform: translate(-72%, -46%) rotate(-8deg); }
+
+    .replay {
+        display: none;
+    }
+}

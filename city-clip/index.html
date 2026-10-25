@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="City names cut out of city photos with background-clip.">
+    <meta name="theme-color" content="#000000">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@800&family=Poppins:wght@800&display=swap" rel="stylesheet">
+
+    <link href="../shared/back.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+
+    <title>City Clip</title>
+</head>
+
+<body>
+    <a class="pg-back" href="../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Playground</a>
+
+    <div class="pg-switch" role="group" aria-label="City set">
+        <button type="button" data-set="india" aria-pressed="true">India</button>
+        <button type="button" data-set="marvel" aria-pressed="false">Marvel</button>
+    </div>
+
+    <main>
+        <h1 class="city" aria-live="polite"></h1>
+    </main>
+
+    <script src="sets.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

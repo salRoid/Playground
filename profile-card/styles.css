@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: 72px 16px 32px;
+    background: #1d1f24 url(img/backdrop.webp) center / cover no-repeat;
+    font-family: "Poppins", sans-serif;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 32px;
+    border-radius: 12px;
+    background:
+        linear-gradient(to top, #1d1f24, rgba(0, 0, 0, 0.23)),
+        url(img/banner.webp) bottom / cover;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+}
+
+.avatar {
+    width: 128px;
+    height: 128px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    object-fit: cover;
+}
+
+.content {
+    min-width: 12rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+}
+
+.name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    animation: slide-down 1.2s ease-out both;
+}
+
+.rule {
+    width: 0;
+    margin: 6px 0 4px;
+    border-bottom: 2px solid #fff;
+    opacity: 0;
+    animation: draw 1.6s ease-out 0.4s forwards;
+}
+
+.socials {
+    display: flex;
+    gap: 4px;
+    animation: slide-left 1.6s ease-out 1.2s both;
+}
+
+.socials a {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.15rem;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.socials a:hover {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.socials a:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: -2px;
+}
+
+@keyframes slide-down {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes draw {
+    to { width: 100%; opacity: 1; }
+}
+
+@keyframes slide-left {
+    0% { transform: translateX(60%); opacity: 0; }
+    40% { opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+/* Phones: stack the avatar above the name instead of squeezing them side by side. */
+@media (max-width: 480px) {
+    .card {
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        max-width: 340px;
+        padding: 32px 20px 24px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .name,
+    .socials {
+        animation: none;
+    }
+
+    .rule {
+        animation: none;
+        width: 100%;
+        opacity: 1;
+    }
+}

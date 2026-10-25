@@ -1,0 +1,71 @@
+/* "Back to Playground" pill shown on every toy. Dark glass so it reads on any backdrop. */
+.pg-back {
+    position: fixed;
+    z-index: 100;
+    top: max(12px, env(safe-area-inset-top));
+    left: max(12px, env(safe-area-inset-left));
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    padding: 0 16px 0 12px;
+    border-radius: 999px;
+    background: rgba(15, 15, 18, 0.55);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #fff;
+    font: 500 14px/1 system-ui, -apple-system, "Segoe UI", sans-serif;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.pg-back:hover {
+    background: rgba(15, 15, 18, 0.75);
+}
+
+.pg-back:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+.pg-back svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Segmented switch for toys with more than one variant, matching the back pill. */
+.pg-switch {
+    position: fixed;
+    z-index: 100;
+    top: max(12px, env(safe-area-inset-top));
+    right: max(12px, env(safe-area-inset-right));
+    display: inline-flex;
+    padding: 4px;
+    border-radius: 999px;
+    background: rgba(15, 15, 18, 0.55);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.pg-switch button {
+    min-height: 36px;
+    padding: 0 14px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.75);
+    font: 500 14px/1 system-ui, -apple-system, "Segoe UI", sans-serif;
+    cursor: pointer;
+}
+
+.pg-switch button[aria-pressed="true"] {
+    background: #fff;
+    color: #111;
+}
+
+.pg-switch button:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
